@@ -1,6 +1,6 @@
 import random
 import sys
-
+from tqdm import tqdm
 import matplotlib.pyplot as plt
 
 def set_to_zero(arr, tendency):
@@ -28,14 +28,14 @@ def main_run(arr_size, iterations):
     return tendency
 if __name__ == "__main__":
     tendey_of_tendecy =[]
-    for k in range(3):
+    for i in tqdm(range(100), desc="Processing"):
         tendency_array = [] 
-        for i in range(90):
-            tnd = main_run(arr_size=50*(10*i+1), iterations=100)  # iterations for each i 
+        for i in range(1,500,25):
+            tnd = main_run(arr_size=50*(10*i), iterations=100)  # iterations for each i 
             tendency_array.append(tnd)
        # print( f' sum of tendency : {sum(tendency_array)}' )  # Print tendency for each array size
         tendey_of_tendecy.append( sum(tendency_array) )
 
     print( f' sum of tendency of tendencies : {sum(tendey_of_tendecy)}' )
-    plt.plot(sum(tendey_of_tendecy) )
+    plt.plot(tendey_of_tendecy)
     plt.show()
