@@ -159,7 +159,7 @@ if __name__ == "__main__":
         tendency_results = []
         for _ in tqdm(range(500), desc="Processing"):
             iteration_results = []
-            for i in range(1, 300, 50):
+            for i in range(1, 100, 50):
                 t = main_run(arr_size=50 * (10 * i), iterations=50, set_zero_fn=zero_func, set_random_fn=rand_func)
                 iteration_results.append(t)
             tendency_results.append(sum(iteration_results))
@@ -170,7 +170,7 @@ if __name__ == "__main__":
        
         result1 = calculate_information_content(tendency_results)
         mean1 = calculate_mean_numpy(tendency_results)
-        print(f"Mean 1: {mean1}")
+        print(f"Mean : {mean1}")
         print(f"  Entropy: {result1['entropy']:.4f} bits")
         print(f"  Max Entropy: {result1['max_entropy']:.4f} bits")
         print(f"  Normalized Information Content: {result1['normalized_info_content']:.4f}")
